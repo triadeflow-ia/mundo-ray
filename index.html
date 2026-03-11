@@ -1,0 +1,1317 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proposta Comercial | Mundo Ray</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #fa72a5;
+      --primary-dim: rgba(250, 114, 165, 0.08);
+      --primary-glow: rgba(250, 114, 165, 0.4);
+      --accent: #30a77e;
+      --accent-dim: rgba(48, 167, 126, 0.08);
+      --accent-glow: rgba(48, 167, 126, 0.4);
+      --bg: #0a0608;
+      --bg-elevated: #120a0e;
+      --bg-card: #0e080b;
+      --white: #ffffff;
+      --gray-100: rgba(255,255,255,0.95);
+      --gray-300: rgba(255,255,255,0.7);
+      --gray-500: rgba(255,255,255,0.5);
+      --gray-700: rgba(255,255,255,0.15);
+      --gray-900: rgba(255,255,255,0.05);
+      --border: rgba(255,255,255,0.06);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg);
+      color: var(--white);
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .dot-grid-subtle {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle, rgba(250,114,165,0.04) 1px, transparent 1px);
+      background-size: 24px 24px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* === NAV === */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 100;
+      background: rgba(10, 6, 8, 0.9);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      padding: 0.8rem 2.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    nav .logo {
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    nav .logo .logo-accent { color: var(--primary); }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2.5rem;
+    }
+
+    nav ul li a {
+      color: var(--gray-500);
+      text-decoration: none;
+      font-size: 0.65rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      transition: color 0.3s;
+    }
+
+    nav ul li a:hover { color: var(--primary); }
+
+    /* === HERO === */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid var(--border);
+      text-align: center;
+      padding: 8rem 2rem 6rem;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 30%, rgba(250, 114, 165, 0.08) 0%, transparent 60%);
+    }
+
+    .hero-content { position: relative; z-index: 1; max-width: 800px; }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.6rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      color: var(--primary);
+      background: var(--primary-dim);
+      border: 1px solid rgba(250, 114, 165, 0.12);
+      padding: 0.5rem 1.2rem;
+      margin-bottom: 2rem;
+    }
+
+    .pulse {
+      width: 6px; height: 6px;
+      background: var(--primary);
+      border-radius: 50%;
+      animation: pulse-anim 2s infinite;
+    }
+
+    @keyframes pulse-anim {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(250, 114, 165, 0.5); }
+      50% { box-shadow: 0 0 0 8px rgba(250, 114, 165, 0); }
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 2rem;
+    }
+
+    .hero h1 .thin { font-weight: 300; color: var(--gray-100); }
+    .hero h1 .accent { color: var(--primary); }
+    .hero h1 .green { color: var(--accent); }
+
+    .hero-logo {
+      margin-bottom: 2.5rem;
+      position: relative;
+    }
+
+    .hero-logo img {
+      height: 120px;
+      filter: drop-shadow(0 0 40px rgba(250, 114, 165, 0.35)) drop-shadow(0 0 80px rgba(48, 167, 126, 0.2));
+      animation: logo-float 6s ease-in-out infinite;
+    }
+
+    @keyframes logo-float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    .hero-logo::after {
+      content: '';
+      position: absolute;
+      bottom: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 200px;
+      height: 40px;
+      background: radial-gradient(ellipse, rgba(250, 114, 165, 0.15) 0%, transparent 70%);
+      filter: blur(8px);
+    }
+
+    .hero-sub {
+      display: flex;
+      gap: 3rem;
+      justify-content: center;
+      margin-bottom: 3rem;
+      flex-wrap: wrap;
+    }
+
+    .hero-sub span {
+      font-size: 0.85rem;
+      color: var(--gray-300);
+    }
+
+    .hero-sub strong { color: var(--white); }
+
+    .hero-stats {
+      display: flex;
+      gap: 4rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .stat { text-align: center; }
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 700;
+      letter-spacing: -2px;
+      line-height: 1;
+    }
+    .stat-number .pink { color: var(--primary); }
+    .stat-number .purple { color: var(--primary); }
+    .stat-label {
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: var(--gray-500);
+      margin-top: 0.5rem;
+    }
+
+    /* === SECTIONS === */
+    .section-divider {
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--border), transparent);
+    }
+
+    .full-section {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 8rem 2.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .section-label {
+      font-size: 0.6rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 5px;
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+      line-height: 1.15;
+    }
+
+    .section-subtitle {
+      font-size: 1rem;
+      color: var(--gray-300);
+      max-width: 600px;
+      margin-bottom: 4rem;
+      line-height: 1.8;
+    }
+
+    /* === PROBLEM GRID === */
+    .problem-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+    }
+
+    .problem-card {
+      background: var(--bg);
+      padding: 2.5rem;
+      transition: all 0.3s;
+    }
+
+    .problem-card:hover { background: rgba(250, 114, 165, 0.02); }
+
+    .problem-card-num {
+      font-size: 3rem;
+      font-weight: 700;
+      color: rgba(255,255,255,0.04);
+      line-height: 1;
+      margin-bottom: 1rem;
+    }
+
+    .problem-card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+    }
+
+    .problem-card p {
+      font-size: 0.9rem;
+      color: var(--gray-300);
+      line-height: 1.6;
+    }
+
+    /* === SOLUTION GRID === */
+    .solution-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+    }
+
+    .solution-card {
+      background: var(--bg);
+      padding: 2.5rem;
+      transition: all 0.3s;
+    }
+
+    .solution-card:hover { background: rgba(250, 114, 165, 0.02); }
+
+    .solution-number {
+      font-size: 0.6rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+
+    .solution-card h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .solution-card p {
+      font-size: 0.85rem;
+      color: var(--gray-300);
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+
+    .solution-features {
+      list-style: none;
+    }
+
+    .solution-features li {
+      font-size: 0.85rem;
+      color: var(--gray-300);
+      padding: 0.3rem 0 0.3rem 1rem;
+      position: relative;
+    }
+
+    .solution-features li::before {
+      content: '+';
+      position: absolute;
+      left: 0;
+      color: var(--primary);
+      font-weight: 700;
+      font-size: 0.75rem;
+    }
+
+    /* === METRICS === */
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--border);
+      max-width: 900px;
+      margin: 3rem auto 0;
+    }
+
+    .metric-card {
+      background: var(--bg);
+      padding: 2.5rem 2rem;
+      text-align: center;
+      transition: all 0.3s;
+    }
+
+    .metric-card:hover { background: rgba(250, 114, 165, 0.02); }
+
+    .metric-value {
+      font-size: 2.5rem;
+      font-weight: 700;
+      letter-spacing: -2px;
+      line-height: 1;
+      margin-bottom: 0.75rem;
+    }
+
+    .metric-value .purple { color: var(--primary); }
+
+    .metric-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 0.5rem;
+    }
+
+    .metric-desc {
+      font-size: 0.75rem;
+      color: var(--gray-500);
+    }
+
+    /* === PACKAGE === */
+    .package-box {
+      border: 1px solid var(--border);
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .package-box::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 2px;
+      background: var(--primary);
+    }
+
+    .package-header {
+      text-align: center;
+      padding: 3rem 3rem 2.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .package-name {
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .package-name .accent { color: var(--primary); }
+
+    .package-tagline {
+      color: var(--gray-500);
+      font-size: 0.8rem;
+      margin-top: 0.5rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .package-modules {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--border);
+    }
+
+    .module {
+      padding: 2rem 2.5rem;
+      background: var(--bg);
+      transition: all 0.3s;
+    }
+
+    .module:hover { background: rgba(250, 114, 165, 0.02); }
+
+    .module h4 {
+      font-size: 0.8rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .module ul { list-style: none; }
+
+    .module ul li {
+      font-size: 1rem;
+      color: var(--gray-300);
+      padding: 0.3rem 0 0.3rem 1rem;
+      position: relative;
+    }
+
+    .module ul li::before {
+      content: '+';
+      position: absolute;
+      left: 0;
+      color: var(--primary);
+      font-weight: 700;
+      font-size: 0.75rem;
+    }
+
+    /* === PRICING === */
+    .pricing-section {
+      max-width: 700px;
+      margin: 4rem auto 0;
+    }
+
+    .pricing-card {
+      border: 1px solid var(--border);
+      padding: 3rem;
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 1.5rem;
+    }
+
+    .pricing-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 2px;
+      background: var(--primary);
+    }
+
+    .pricing-card h3 {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+
+    .pricing-value {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .pricing-value .currency { font-size: 1.2rem; color: var(--gray-500); }
+    .pricing-value .period { font-size: 0.8rem; color: var(--gray-500); font-weight: 400; }
+
+    .pricing-desc {
+      font-size: 0.9rem;
+      color: var(--gray-300);
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+
+    .pricing-features {
+      list-style: none;
+    }
+
+    .pricing-features li {
+      font-size: 0.85rem;
+      color: var(--gray-300);
+      padding: 0.35rem 0 0.35rem 1.2rem;
+      position: relative;
+    }
+
+    .pricing-features li::before {
+      content: '\2713';
+      position: absolute;
+      left: 0;
+      color: var(--primary);
+      font-weight: 700;
+      font-size: 0.7rem;
+    }
+
+    .pricing-note {
+      font-size: 0.75rem;
+      color: var(--gray-500);
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+      line-height: 1.6;
+    }
+
+    /* === ROADMAP === */
+    .roadmap {
+      position: relative;
+      max-width: 900px;
+      margin: 4rem auto 0;
+      padding: 2rem 0;
+    }
+
+    .roadmap::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      transform: translateX(-50%);
+      background: linear-gradient(to bottom, transparent, var(--primary) 10%, var(--primary) 90%, transparent);
+      box-shadow: 0 0 15px var(--primary-glow), 0 0 40px rgba(250,114,165,0.15);
+      clip-path: inset(100% 0 0 0);
+      transition: clip-path 1.5s ease-out;
+    }
+
+    .roadmap.line-visible::before {
+      clip-path: inset(0 0 0 0);
+    }
+
+    .roadmap-item {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 0;
+      margin-bottom: 4rem;
+      position: relative;
+    }
+
+    .roadmap-left {
+      text-align: right;
+      padding-right: 2.5rem;
+    }
+
+    .roadmap-left-number {
+      font-size: 3.5rem;
+      font-weight: 700;
+      color: rgba(255,255,255,0.06);
+      line-height: 1;
+      letter-spacing: -2px;
+      margin-bottom: 0.5rem;
+    }
+
+    .roadmap-left-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--white);
+    }
+
+    .roadmap-dot {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--bg);
+      border: 2px solid var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      z-index: 2;
+      box-shadow: 0 0 20px var(--primary-glow), 0 0 40px rgba(250,114,165,0.1);
+    }
+
+    .roadmap-dot-inner {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--primary);
+      box-shadow: 0 0 10px rgba(250,114,165,0.6);
+    }
+
+    .roadmap-dot::after {
+      content: '';
+      position: absolute;
+      right: -2.5rem;
+      top: 50%;
+      width: 2rem;
+      height: 1px;
+      background: linear-gradient(to right, rgba(250,114,165,0.4), rgba(250,114,165,0.08));
+    }
+
+    .roadmap-content {
+      padding-left: 2.5rem;
+    }
+
+    .roadmap-content p {
+      font-size: 1rem;
+      color: var(--gray-300);
+      line-height: 1.7;
+      max-width: 350px;
+    }
+
+    .roadmap-tag {
+      display: inline-block;
+      font-size: 0.6rem;
+      font-weight: 700;
+      background: var(--primary-dim);
+      border: 1px solid rgba(250, 114, 165, 0.12);
+      color: var(--primary);
+      padding: 0.25rem 0.8rem;
+      margin-bottom: 0.75rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    .roadmap-item.roadmap-infinity .roadmap-dot {
+      border-color: var(--primary);
+      box-shadow: 0 0 25px rgba(250,114,165,0.5), 0 0 60px rgba(250,114,165,0.15);
+    }
+
+    .roadmap-item.roadmap-infinity .roadmap-dot-inner { width: 0; height: 0; }
+
+    .roadmap-item.roadmap-infinity .roadmap-dot::before {
+      content: '\221E';
+      font-size: 1.5rem;
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    /* === CTA === */
+    .cta {
+      text-align: center;
+      padding: 10rem 2rem;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .cta::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 50%, rgba(250, 114, 165, 0.06) 0%, transparent 60%);
+    }
+
+    .cta-content { position: relative; z-index: 1; }
+
+    .cta h2 {
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      line-height: 1.1;
+    }
+
+    .cta p {
+      font-size: 1rem;
+      color: var(--gray-300);
+      margin-bottom: 3rem;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.8;
+    }
+
+    /* === BUTTONS === */
+    .btn {
+      display: inline-block;
+      padding: 0.9rem 2.5rem;
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      transition: all 0.3s;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: var(--white);
+      border: 1px solid var(--primary);
+    }
+
+    .btn-primary:hover {
+      box-shadow: 0 0 30px var(--primary-glow);
+      transform: translateY(-1px);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      border: 1px solid var(--border);
+      margin-left: 1rem;
+    }
+
+    .btn-outline:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    /* === FOOTER === */
+    footer {
+      text-align: center;
+      padding: 4rem 2rem 3rem;
+      border-top: 1px solid var(--border);
+    }
+
+    footer p { font-size: 0.8rem; color: var(--gray-300); }
+    footer a { color: var(--primary); text-decoration: none; font-weight: 700; transition: opacity 0.2s; }
+    footer a:hover { opacity: 0.8; }
+
+    /* === CONFIDENTIAL BAR === */
+    .confidential {
+      text-align: center;
+      padding: 0.5rem;
+      background: rgba(250, 114, 165, 0.03);
+      border-bottom: 1px solid var(--border);
+      font-size: 0.5rem;
+      color: var(--gray-500);
+      text-transform: uppercase;
+      letter-spacing: 6px;
+      font-weight: 700;
+      margin-top: 55px;
+    }
+
+    /* === SCROLL ANIMATIONS === */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(15px);
+      transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .roadmap-item.fade-in {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+    }
+
+    .roadmap-item.fade-in .roadmap-dot {
+      transform: scale(0);
+      transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s;
+    }
+
+    .roadmap-item.fade-in .roadmap-content {
+      opacity: 0;
+      transform: translateX(-20px);
+      transition: opacity 0.5s ease-out 0.4s, transform 0.5s ease-out 0.4s;
+    }
+
+    .roadmap-item.fade-in .roadmap-left {
+      opacity: 0;
+      transform: translateX(20px);
+      transition: opacity 0.5s ease-out 0.2s, transform 0.5s ease-out 0.2s;
+    }
+
+    .roadmap-item.fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .roadmap-item.fade-in.visible .roadmap-dot { transform: scale(1); }
+    .roadmap-item.fade-in.visible .roadmap-content { opacity: 1; transform: translateX(0); }
+    .roadmap-item.fade-in.visible .roadmap-left { opacity: 1; transform: translateX(0); }
+
+    .roadmap-item:nth-child(1) { transition-delay: 0s; }
+    .roadmap-item:nth-child(2) { transition-delay: 0.15s; }
+    .roadmap-item:nth-child(3) { transition-delay: 0.3s; }
+    .roadmap-item:nth-child(4) { transition-delay: 0.45s; }
+    .roadmap-item:nth-child(5) { transition-delay: 0.6s; }
+
+    /* === RESPONSIVE === */
+    @media (max-width: 1024px) {
+      .solution-grid { grid-template-columns: repeat(2, 1fr); }
+      .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 768px) {
+      nav ul { display: none; }
+      .hero { padding: 7rem 2rem 4rem; }
+      .hero-logo img { height: 80px; }
+      .hero-sub { flex-direction: column; gap: 0.5rem; }
+      .hero-stats { gap: 2rem; }
+      .problem-grid { grid-template-columns: 1fr; }
+      .solution-grid { grid-template-columns: 1fr; }
+      .metrics-grid { grid-template-columns: 1fr 1fr; }
+      .package-modules { grid-template-columns: 1fr; }
+      .btn-outline { margin-left: 0; margin-top: 1rem; display: block; }
+      .full-section .inner { padding: 5rem 1.5rem; }
+      .roadmap::before { left: 24px; }
+      .roadmap-item {
+        grid-template-columns: auto 1fr;
+        gap: 0;
+      }
+      .roadmap-left { display: none; }
+      .roadmap-dot { width: 40px; height: 40px; }
+      .roadmap-dot::after { right: -1.5rem; width: 1rem; }
+      .roadmap-content { padding-left: 1.5rem; }
+      .roadmap-content p { max-width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="logo">
+      <span class="logo-accent">MUNDO</span> <span style="color:var(--accent)">RAY</span>
+    </div>
+    <ul>
+      <li><a href="#problema">Desafio</a></li>
+      <li><a href="#solucao">Solucao</a></li>
+      <li><a href="#pacote">Investimento</a></li>
+      <li><a href="#contato">Contato</a></li>
+    </ul>
+  </nav>
+
+  <div class="confidential">Proposta Comercial Confidencial</div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="dot-grid-subtle"></div>
+    <div class="hero-content">
+      <div class="hero-logo">
+        <img src="https://cdn.awsli.com.br/400x300/2519/2519810/logo/logolojav2-1pk3bjgzxd.png" alt="Mundo Ray">
+      </div>
+      <div class="hero-badge"><span class="pulse"></span> Proposta Exclusiva</div>
+      <h1>
+        <span class="thin">Seu atacado com</span><br>
+        <span class="accent">vendas</span> no<br>
+        <span class="green">controle</span>
+      </h1>
+      <div class="hero-sub">
+        <span><strong>CRM Profissional</strong> para atacado B2B</span>
+        <span><strong>WhatsApp</strong> centralizado com metricas</span>
+        <span><strong>Bling</strong> integrado ao processo</span>
+      </div>
+      <div class="hero-stats">
+        <div class="stat">
+          <div class="stat-number">2<span class="purple">+</span></div>
+          <div class="stat-label">Vendedores</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">5<span class="purple">+</span></div>
+          <div class="stat-label">Canais de Venda</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">15<span class="purple">+</span></div>
+          <div class="stat-label">Grupos Ativos</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- PROBLEMA -->
+  <div class="full-section" id="problema">
+    <div class="dot-grid-subtle"></div>
+    <div class="inner">
+      <div class="section-label fade-in">O Desafio</div>
+      <h2 class="section-title fade-in">O que esta travando<br>o crescimento do atacado</h2>
+      <p class="section-subtitle fade-in">O e-commerce funciona. Shopee, TikTok e Mercado Livre vendem. Mas o atacado B2B para lojistas precisa de processo, controle e relacionamento.</p>
+      <div class="problem-grid">
+        <div class="problem-card fade-in">
+          <div class="problem-card-num">01</div>
+          <h3>Vendas no "mano a mano"</h3>
+          <p>Vendedores atendendo pelo WhatsApp pessoal, sem registro, sem acompanhamento. Lojistas no solto, sem processo de follow-up.</p>
+        </div>
+        <div class="problem-card fade-in">
+          <div class="problem-card-num">02</div>
+          <h3>Sem visibilidade dos numeros</h3>
+          <p>Quantos lojistas entraram? Quantos fecharam? Qual vendedor converte mais? Sem CRM, voce gerencia no escuro.</p>
+        </div>
+        <div class="problem-card fade-in">
+          <div class="problem-card-num">03</div>
+          <h3>Base de clientes subutilizada</h3>
+          <p>15 grupos, base do Bling com anos de clientes. Mas sem ativacao, sem follow-up, sem recompra sistematizada.</p>
+        </div>
+        <div class="problem-card fade-in">
+          <div class="problem-card-num">04</div>
+          <h3>Lojistas de alto ticket escapam</h3>
+          <p>Lojista com 10 lojas nao compra pelo site. Ele precisa de atendimento, negociacao e relacionamento. Sem vendedor dedicado, ele vai embora.</p>
+        </div>
+        <div class="problem-card fade-in">
+          <div class="problem-card-num">05</div>
+          <h3>Varios WhatsApps, zero controle</h3>
+          <p>Ja teve 6 numeros, vendedores no pessoal. Nao sabe o que acontece, nao tem metricas, nao tem historico.</p>
+        </div>
+        <div class="problem-card fade-in">
+          <div class="problem-card-num">06</div>
+          <h3>Campanha sem fechamento</h3>
+          <p>Faz campanha, gera demanda, mas nao consegue acompanhar quem veio, quem fechou, qual o retorno real do investimento.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <!-- SOLUCAO -->
+  <div class="full-section" id="solucao" style="border-bottom:1px solid var(--border);">
+    <div class="inner">
+      <div class="section-label fade-in">A Solucao</div>
+      <h2 class="section-title fade-in">CRM Profissional<br>para o Atacado Mundo Ray</h2>
+      <p class="section-subtitle fade-in">Processo comercial desenhado, ferramenta configurada, time treinado. Tudo que voce precisa para profissionalizar o atacado B2B via WhatsApp.</p>
+      <div class="solution-grid">
+        <div class="solution-card fade-in">
+          <div class="solution-number">Modulo 01</div>
+          <h3>CRM & Pipeline de Vendas</h3>
+          <p>Todo o processo comercial desenhado e implementado no CRM. Do lead ao fechamento, cada etapa visivel e rastreavel.</p>
+          <ul class="solution-features">
+            <li>Pipeline de atacado B2B customizado</li>
+            <li>Etapas claras de negociacao</li>
+            <li>Distribuicao Round Robin entre vendedores</li>
+            <li>Historico completo de cada lojista</li>
+            <li>Tags e campos para segmentacao</li>
+          </ul>
+        </div>
+        <div class="solution-card fade-in">
+          <div class="solution-number">Modulo 02</div>
+          <h3>WhatsApp Centralizado</h3>
+          <p>Todos os vendedores num unico painel. Conversas rastreadas, sem numero pessoal, sem perder historico.</p>
+          <ul class="solution-features">
+            <li>Chat unificado para toda a equipe</li>
+            <li>Cada vendedor com login proprio</li>
+            <li>Historico de conversas centralizado</li>
+            <li>Disparo de campanhas para a base</li>
+            <li>App mobile para vendedores</li>
+          </ul>
+        </div>
+        <div class="solution-card fade-in">
+          <div class="solution-number">Modulo 03</div>
+          <h3>Automacoes & Follow-up</h3>
+          <p>Nenhum lojista esquecido. Follow-up automatico, reativacao da base, aniversarios e campanhas programadas.</p>
+          <ul class="solution-features">
+            <li>Follow-up automatico de lojistas</li>
+            <li>Reativacao de base inativa</li>
+            <li>Lembrete pos-compra (7 e 15 dias)</li>
+            <li>Aniversariantes do dia para vendedores</li>
+            <li>Campanhas de promocao por segmento</li>
+          </ul>
+        </div>
+        <div class="solution-card fade-in">
+          <div class="solution-number">Modulo 04</div>
+          <h3>Dashboard & Metricas</h3>
+          <p>Visao completa do desempenho comercial. Quem vende, quanto vende, onde esta cada negociacao.</p>
+          <ul class="solution-features">
+            <li>Vendas por vendedor em tempo real</li>
+            <li>Taxa de conversao por fonte</li>
+            <li>Ranking de performance da equipe</li>
+            <li>Receita por periodo e por canal</li>
+            <li>Relatorios automaticos semanais</li>
+          </ul>
+        </div>
+        <div class="solution-card fade-in">
+          <div class="solution-number">Modulo 05</div>
+          <h3>Integracao Bling</h3>
+          <p>Conectar o ERP ao CRM. Quando o vendedor fecha, o pedido ja reflete. Sem retrabalho, sem digitacao dupla.</p>
+          <ul class="solution-features">
+            <li>Sincronizacao de clientes Bling x CRM</li>
+            <li>Importacao da base existente</li>
+            <li>Venda ganha = registro automatico no ERP</li>
+            <li>Historico de compras do lojista visivel</li>
+            <li>Conciliacao de vendas x pipeline</li>
+          </ul>
+        </div>
+        <div class="solution-card fade-in">
+          <div class="solution-number">Modulo 06</div>
+          <h3>Publicacao Multi-Canal</h3>
+          <p>Publicar conteudo no Instagram, TikTok, Facebook e mais em um unico lugar. Recurso bonus da plataforma, sem custo adicional.</p>
+          <ul class="solution-features">
+            <li>Publicar em todas as redes de uma vez</li>
+            <li>Agendamento de conteudo recorrente</li>
+            <li>Planejamento de 30 dias de conteudo</li>
+            <li>Instagram, TikTok, Facebook, YouTube</li>
+            <li>Sem custo adicional na plataforma</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <!-- METRICAS -->
+  <div class="full-section">
+    <div class="inner" style="text-align:center;">
+      <div class="section-label fade-in">Impacto Esperado</div>
+      <h2 class="section-title fade-in" style="text-align:center;">Numeros que falam sozinhos</h2>
+      <div class="metrics-grid">
+        <div class="metric-card fade-in">
+          <div class="metric-value"><span class="purple">100%</span></div>
+          <div class="metric-label">Visibilidade</div>
+          <div class="metric-desc">Saber o que cada vendedor faz</div>
+        </div>
+        <div class="metric-card fade-in">
+          <div class="metric-value">1</div>
+          <div class="metric-label">WhatsApp centralizado</div>
+          <div class="metric-desc">Acabou os 6 numeros soltos</div>
+        </div>
+        <div class="metric-card fade-in">
+          <div class="metric-value"><span class="purple">+40%</span></div>
+          <div class="metric-label">Recompra estimada</div>
+          <div class="metric-desc">Follow-up automatico ativa a base</div>
+        </div>
+        <div class="metric-card fade-in">
+          <div class="metric-value">0</div>
+          <div class="metric-label">Lojistas esquecidos</div>
+          <div class="metric-desc">CRM nao deixa ninguem pra tras</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <!-- PACOTE & INVESTIMENTO -->
+  <div class="full-section" id="pacote">
+    <div class="dot-grid-subtle"></div>
+    <div class="inner">
+      <div class="section-label fade-in">Investimento</div>
+      <h2 class="section-title fade-in">Tudo que a Mundo Ray precisa</h2>
+      <p class="section-subtitle fade-in">Pacote desenhado sob medida para profissionalizar o atacado B2B e dar clareza total sobre o processo comercial.</p>
+
+      <div class="package-box fade-in">
+        <div class="package-header">
+          <div class="package-name">Pacote <span style="color:var(--primary)">Mundo</span> <span style="color:var(--accent)">Ray</span></div>
+          <div class="package-tagline">CRM + WhatsApp + Automacoes + Dashboard + Bling</div>
+        </div>
+        <div class="package-modules">
+          <div class="module">
+            <h4>CRM & Pipeline</h4>
+            <ul>
+              <li>Desenho completo do processo comercial</li>
+              <li>Pipeline de atacado B2B customizado</li>
+              <li>Campos e tags personalizados</li>
+              <li>Distribuicao automatica de leads</li>
+              <li>Importacao da base existente do Bling</li>
+            </ul>
+          </div>
+          <div class="module">
+            <h4>WhatsApp Integrado</h4>
+            <ul>
+              <li>Chat centralizado para equipe</li>
+              <li>Cada vendedor com login individual</li>
+              <li>Historico de conversas rastreado</li>
+              <li>Disparo de campanhas para a base</li>
+              <li>App mobile para vendedores em campo</li>
+            </ul>
+          </div>
+          <div class="module">
+            <h4>Automacoes</h4>
+            <ul>
+              <li>Follow-up automatico de lojistas</li>
+              <li>Reativacao de base inativa</li>
+              <li>Lembrete pos-compra (7/15 dias)</li>
+              <li>Aniversariantes do dia</li>
+              <li>Campanhas por segmento de lojista</li>
+            </ul>
+          </div>
+          <div class="module">
+            <h4>Dashboard & Bling</h4>
+            <ul>
+              <li>Metricas por vendedor em tempo real</li>
+              <li>Funil de vendas com taxa de conversao</li>
+              <li>Integracao Bling (clientes + pedidos)</li>
+              <li>Relatorios semanais automaticos</li>
+              <li>ROI das campanhas de trafego</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- PRICING -->
+      <div class="pricing-section">
+        <div class="pricing-card fade-in">
+          <h3>Implementacao</h3>
+          <div class="pricing-value"><span class="currency">R$</span> 5.000</div>
+          <div class="pricing-desc">Investimento unico para desenhar o processo comercial, configurar o CRM, importar a base, integrar Bling e treinar a equipe.</div>
+          <ul class="pricing-features">
+            <li>Onboard e levantamento completo da operacao</li>
+            <li>Desenho do processo comercial (arquitetura)</li>
+            <li>Configuracao completa do CRM</li>
+            <li>Importacao da base de clientes do Bling</li>
+            <li>Criacao de automacoes e follow-ups</li>
+            <li>Dashboard personalizado com suas metricas</li>
+            <li>Treinamento da equipe (vendedores + gestor)</li>
+            <li>3 meses de acompanhamento e ajustes</li>
+          </ul>
+        </div>
+        <div class="pricing-card fade-in">
+          <h3>Plataforma (mensal)</h3>
+          <div class="pricing-value"><span class="currency">R$</span> 97 <span class="period">/ usuario / mes</span></div>
+          <div class="pricing-desc">Plataforma completa com CRM, WhatsApp integrado, automacoes, dashboard e app mobile. Contatos ilimitados.</div>
+          <ul class="pricing-features">
+            <li>3 usuarios iniciais (2 vendedores + 1 admin)</li>
+            <li>Contatos ilimitados</li>
+            <li>WhatsApp integrado incluso</li>
+            <li>Automacoes e workflows ilimitados</li>
+            <li>Dashboard e relatorios</li>
+            <li>App mobile para vendedores</li>
+            <li>Publicacao multi-canal (redes sociais)</li>
+            <li>Suporte tecnico</li>
+          </ul>
+          <div class="pricing-note">
+            <strong>3 usuarios x R$97 = R$291/mes</strong><br>
+            Opcao com integracao completa (WhatsApp + Instagram DM + SMS): R$120/usuario/mes<br><br>
+            <strong>Inteligencia Artificial (opcional):</strong> R$150/mes ilimitado. Caso queiram adicionar atendente IA no futuro, a implementacao ja esta inclusa no pacote.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <!-- ROADMAP -->
+  <div class="full-section">
+    <div class="inner" style="text-align:center;">
+      <div class="section-label fade-in">Implementacao</div>
+      <h2 class="section-title fade-in" style="text-align:center;">Pronto em 4 semanas</h2>
+      <p class="section-subtitle fade-in" style="margin-left:auto;margin-right:auto;text-align:center;">Processo agil e transparente do inicio ao go-live.</p>
+
+      <div class="roadmap">
+        <!-- S1 -->
+        <div class="roadmap-item fade-in">
+          <div class="roadmap-left">
+            <div class="roadmap-left-number">S1</div>
+            <div class="roadmap-left-title">Discovery & Arquitetura</div>
+          </div>
+          <div class="roadmap-dot"><div class="roadmap-dot-inner"></div></div>
+          <div class="roadmap-content">
+            <span class="roadmap-tag">Onboard &rarr; Processo desenhado</span>
+            <p>Levantamento da operacao, mapeamento do processo de venda atacado, definicao de etapas, regras e responsabilidades. Desenho completo da arquitetura comercial.</p>
+          </div>
+        </div>
+
+        <!-- S2 -->
+        <div class="roadmap-item fade-in">
+          <div class="roadmap-left">
+            <div class="roadmap-left-number">S2</div>
+            <div class="roadmap-left-title">CRM & Integracoes</div>
+          </div>
+          <div class="roadmap-dot"><div class="roadmap-dot-inner"></div></div>
+          <div class="roadmap-content">
+            <span class="roadmap-tag">CRM configurado &rarr; Bling conectado</span>
+            <p>Pipeline montado, campos e tags criados, integracao com Bling, importacao da base de clientes existente. WhatsApp integrado ao CRM.</p>
+          </div>
+        </div>
+
+        <!-- S3 -->
+        <div class="roadmap-item fade-in">
+          <div class="roadmap-left">
+            <div class="roadmap-left-number">S3</div>
+            <div class="roadmap-left-title">Automacoes & Dashboard</div>
+          </div>
+          <div class="roadmap-dot"><div class="roadmap-dot-inner"></div></div>
+          <div class="roadmap-content">
+            <span class="roadmap-tag">Automacoes &rarr; Dashboard ativo</span>
+            <p>Follow-ups automaticos, reativacao de base, campanhas por segmento. Dashboard personalizado com metricas de vendas por vendedor.</p>
+          </div>
+        </div>
+
+        <!-- S4 -->
+        <div class="roadmap-item fade-in">
+          <div class="roadmap-left">
+            <div class="roadmap-left-number">S4</div>
+            <div class="roadmap-left-title">Treinamento & Go-Live</div>
+          </div>
+          <div class="roadmap-dot"><div class="roadmap-dot-inner"></div></div>
+          <div class="roadmap-content">
+            <span class="roadmap-tag">Equipe treinada &rarr; Producao</span>
+            <p>Treinamento dos 2 vendedores + gestor. Go-live gradual, ajustes com feedback real. Inicio do acompanhamento de 3 meses.</p>
+          </div>
+        </div>
+
+        <!-- INFINITY -->
+        <div class="roadmap-item roadmap-infinity fade-in">
+          <div class="roadmap-left">
+            <div class="roadmap-left-number">&infin;</div>
+            <div class="roadmap-left-title">Acompanhamento</div>
+          </div>
+          <div class="roadmap-dot"><div class="roadmap-dot-inner"></div></div>
+          <div class="roadmap-content">
+            <span class="roadmap-tag">3 meses &rarr; Suporte contínuo</span>
+            <p>Acompanhamento mensal, ajustes de processo, analise de metricas. Time sempre evoluindo com o CRM.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <section class="cta" id="contato">
+    <div class="dot-grid-subtle"></div>
+    <div class="cta-content">
+      <h2 class="fade-in">Pronto pra colocar o<br>atacado Mundo Ray no<br><span style="color:var(--primary)">piloto automatico</span>?</h2>
+      <p class="fade-in">Vamos conversar sobre como o CRM pode transformar o processo comercial do atacado e dar clareza total sobre seus numeros.</p>
+      <div class="fade-in">
+        <a href="https://wa.me/5519983805908?text=Oi%20Alex!%20Quero%20saber%20mais%20sobre%20a%20proposta%20de%20CRM%20pra%20Mundo%20Ray" class="btn btn-primary">Falar com Alex</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p style="margin-bottom:0.75rem;display:flex;align-items:center;justify-content:center;">
+      <a href="https://triadeflow.ai/" target="_blank"><img src="https://sushidahora.triadeflow.ai/static/triadeflow-logo.png" alt="Triadeflow" style="height:48px;opacity:0.85;" onerror="this.style.display='none';this.parentElement.innerHTML='<span style=color:#7C3AED;font-weight:700;letter-spacing:0.1em;font-size:1.1rem>TRIADEFLOW</span>';"></a>
+    </p>
+    <p>Proposta preparada exclusivamente para <strong style="color:var(--white);">Mundo Ray</strong>, Fortaleza/CE</p>
+    <p style="margin-top:0.75rem;display:flex;justify-content:center;gap:1.25rem;flex-wrap:wrap;">
+      <a href="https://triadeflow.ai/" target="_blank" style="font-weight:400;color:var(--gray-500);">triadeflow.ai</a>
+      <a href="https://wa.me/5519983805908" target="_blank" style="font-weight:400;color:var(--gray-500);">+55 19 98380-5908</a>
+    </p>
+    <p style="margin-top:1rem;font-size:0.6rem;color:rgba(255,255,255,0.12);line-height:1.6;">
+      Av. Des. Moreira, 1300 - Sala 1002 - Aldeota, Fortaleza - CE, 60170-002, Brasil<br>
+      CNPJ: 61.448.621/0001-2
+    </p>
+    <p style="margin-top:0.75rem;font-size:0.6rem;color:rgba(255,255,255,0.15);">&copy; 2025 TriadeFlow. All rights reserved.</p>
+  </footer>
+
+  <script>
+  // === SCROLL ANIMATIONS ===
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      } else {
+        entry.target.classList.remove('visible');
+      }
+    });
+  }, { threshold: 0.05 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // === ROADMAP LINE ANIMATION ===
+  const roadmap = document.querySelector('.roadmap');
+  if (roadmap) {
+    const lineObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          roadmap.classList.add('line-visible');
+        } else {
+          roadmap.classList.remove('line-visible');
+        }
+      });
+    }, { threshold: 0.15 });
+    lineObserver.observe(roadmap);
+  }
+  </script>
+
+</body>
+</html>
