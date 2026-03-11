@@ -97,127 +97,90 @@
     .hero {
       min-height: 100vh;
       display: flex;
-      align-items: center;
+      flex-direction: column;
       justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 6rem 2rem 4rem;
       position: relative;
       overflow: hidden;
-      border-bottom: 1px solid var(--border);
-      text-align: center;
-      padding: 8rem 2rem 6rem;
     }
 
     .hero::before {
       content: '';
       position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse at 50% 30%, rgba(250, 114, 165, 0.08) 0%, transparent 60%);
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle at 50% 50%, rgba(250, 114, 165, 0.15) 0%, transparent 50%);
+      animation: pulse-bg 8s ease-in-out infinite;
     }
 
-    .hero-content { position: relative; z-index: 1; max-width: 800px; }
+    @keyframes pulse-bg {
+      0%, 100% { opacity: 0.3; transform: scale(1); }
+      50% { opacity: 0.6; transform: scale(1.1); }
+    }
 
     .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 0.6rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 4px;
+      position: relative;
+      display: inline-block;
+      background: rgba(250, 114, 165, 0.1);
+      border: 1px solid rgba(250, 114, 165, 0.3);
+      border-radius: 50px;
+      padding: 0.5rem 1.5rem;
+      font-size: 0.8rem;
+      font-weight: 600;
       color: var(--primary);
-      background: var(--primary-dim);
-      border: 1px solid rgba(250, 114, 165, 0.12);
-      padding: 0.5rem 1.2rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
       margin-bottom: 2rem;
-    }
-
-    .pulse {
-      width: 6px; height: 6px;
-      background: var(--primary);
-      border-radius: 50%;
-      animation: pulse-anim 2s infinite;
-    }
-
-    @keyframes pulse-anim {
-      0%, 100% { box-shadow: 0 0 0 0 rgba(250, 114, 165, 0.5); }
-      50% { box-shadow: 0 0 0 8px rgba(250, 114, 165, 0); }
     }
 
     .hero h1 {
-      font-size: clamp(2.5rem, 5vw, 4rem);
-      font-weight: 700;
+      position: relative;
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      font-weight: 900;
       line-height: 1.1;
-      letter-spacing: -0.02em;
-      margin-bottom: 2rem;
+      margin-bottom: 1.5rem;
+      max-width: 900px;
     }
 
-    .hero h1 .thin { font-weight: 300; color: var(--gray-100); }
     .hero h1 .accent { color: var(--primary); }
     .hero h1 .green { color: var(--accent); }
 
-    .hero-logo {
-      margin-bottom: 2.5rem;
+    .hero p {
       position: relative;
-    }
-
-    .hero-logo img {
-      height: 120px;
-      filter: drop-shadow(0 0 40px rgba(250, 114, 165, 0.35)) drop-shadow(0 0 80px rgba(48, 167, 126, 0.2));
-      animation: logo-float 6s ease-in-out infinite;
-    }
-
-    @keyframes logo-float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-8px); }
-    }
-
-    .hero-logo::after {
-      content: '';
-      position: absolute;
-      bottom: -20px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 200px;
-      height: 40px;
-      background: radial-gradient(ellipse, rgba(250, 114, 165, 0.15) 0%, transparent 70%);
-      filter: blur(8px);
-    }
-
-    .hero-sub {
-      display: flex;
-      gap: 3rem;
-      justify-content: center;
+      font-size: 1.25rem;
+      color: rgba(255,255,255,0.7);
+      max-width: 600px;
       margin-bottom: 3rem;
-      flex-wrap: wrap;
+      font-weight: 300;
     }
-
-    .hero-sub span {
-      font-size: 0.85rem;
-      color: var(--gray-300);
-    }
-
-    .hero-sub strong { color: var(--white); }
 
     .hero-stats {
+      position: relative;
       display: flex;
-      gap: 4rem;
-      justify-content: center;
-      flex-wrap: wrap;
+      gap: 3rem;
+      margin-top: 2rem;
     }
 
-    .stat { text-align: center; }
-    .stat-number {
+    .hero-stats .stat {
+      text-align: center;
+    }
+
+    .hero-stats .stat-number {
       font-size: 2.5rem;
-      font-weight: 700;
-      letter-spacing: -2px;
+      font-weight: 900;
+      color: var(--primary);
       line-height: 1;
     }
-    .stat-number .pink { color: var(--primary); }
-    .stat-number .purple { color: var(--primary); }
-    .stat-label {
-      font-size: 0.65rem;
+
+    .hero-stats .stat-label {
+      font-size: 0.75rem;
       text-transform: uppercase;
-      letter-spacing: 3px;
-      color: var(--gray-500);
+      letter-spacing: 2px;
+      color: rgba(255,255,255,0.5);
       margin-top: 0.5rem;
     }
 
@@ -840,7 +803,7 @@
     @media (max-width: 768px) {
       nav ul { display: none; }
       .hero { padding: 7rem 2rem 4rem; }
-      .hero-logo img { height: 80px; }
+      .hero-stats { gap: 2rem; }
       .hero-sub { flex-direction: column; gap: 0.5rem; }
       .hero-stats { gap: 2rem; }
       .problem-grid { grid-template-columns: 1fr; }
@@ -877,39 +840,29 @@
     </ul>
   </nav>
 
-  <div class="confidential">Proposta Comercial Confidencial</div>
-
   <!-- HERO -->
   <section class="hero">
-    <div class="dot-grid-subtle"></div>
-    <div class="hero-content">
-      <div class="hero-logo">
-        <img src="https://cdn.awsli.com.br/400x300/2519/2519810/logo/logolojav2-1pk3bjgzxd.png" alt="Mundo Ray">
+    <div class="hero-badge">👗 Proposta Exclusiva</div>
+    <h1>
+      Seu atacado no<br>
+      <span class="accent">piloto automático</span><br>
+      com CRM Profissional
+    </h1>
+    <p>
+      Centralize o WhatsApp, controle cada vendedor e nunca mais perca um lojista — processo comercial desenhado e integrado ao Bling.
+    </p>
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-number">2+</div>
+        <div class="stat-label">Vendedores</div>
       </div>
-      <div class="hero-badge"><span class="pulse"></span> Proposta Exclusiva</div>
-      <h1>
-        <span class="thin">Seu atacado com</span><br>
-        <span class="accent">vendas</span> no<br>
-        <span class="green">controle</span>
-      </h1>
-      <div class="hero-sub">
-        <span><strong>CRM Profissional</strong> para atacado B2B</span>
-        <span><strong>WhatsApp</strong> centralizado com metricas</span>
-        <span><strong>Bling</strong> integrado ao processo</span>
+      <div class="stat">
+        <div class="stat-number">5+</div>
+        <div class="stat-label">Canais de Venda</div>
       </div>
-      <div class="hero-stats">
-        <div class="stat">
-          <div class="stat-number">2<span class="purple">+</span></div>
-          <div class="stat-label">Vendedores</div>
-        </div>
-        <div class="stat">
-          <div class="stat-number">5<span class="purple">+</span></div>
-          <div class="stat-label">Canais de Venda</div>
-        </div>
-        <div class="stat">
-          <div class="stat-number">15<span class="purple">+</span></div>
-          <div class="stat-label">Grupos Ativos</div>
-        </div>
+      <div class="stat">
+        <div class="stat-number">15+</div>
+        <div class="stat-label">Grupos Ativos</div>
       </div>
     </div>
   </section>
