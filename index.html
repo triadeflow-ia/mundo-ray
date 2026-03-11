@@ -93,95 +93,179 @@
 
     nav ul li a:hover { color: var(--primary); }
 
-    /* === HERO === */
+    /* === VERTICAL SIDEBAR === */
+    .v-sidebar {
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 52px;
+      border-right: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 3;
+    }
+
+    .v-sidebar-text {
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+      font-size: 0.55rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 5px;
+      color: var(--gray-500);
+      white-space: nowrap;
+    }
+
+    /* === HERO - SPLIT LAYOUT === */
     .hero {
       min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero-left {
       display: flex;
       flex-direction: column;
       justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 6rem 2rem 4rem;
+      padding: 5rem 5rem 5rem 6rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-right {
       position: relative;
       overflow: hidden;
     }
 
-    .hero::before {
-      content: '';
+    .hero-right img {
       position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle at 50% 50%, rgba(250, 114, 165, 0.15) 0%, transparent 50%);
-      animation: pulse-bg 8s ease-in-out infinite;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.6);
     }
 
-    @keyframes pulse-bg {
-      0%, 100% { opacity: 0.3; transform: scale(1); }
-      50% { opacity: 0.6; transform: scale(1.1); }
+    .hero-right::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, var(--bg) 0%, rgba(10,6,8,0.4) 20%, transparent 45%);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .hero-right .dot-grid-subtle {
+      z-index: 2;
     }
 
     .hero-badge {
-      position: relative;
-      display: inline-block;
-      background: rgba(250, 114, 165, 0.1);
-      border: 1px solid rgba(250, 114, 165, 0.3);
-      border-radius: 50px;
-      padding: 0.5rem 1.5rem;
-      font-size: 0.8rem;
-      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.55rem;
+      font-weight: 700;
       color: var(--primary);
       text-transform: uppercase;
-      letter-spacing: 2px;
-      margin-bottom: 2rem;
+      letter-spacing: 5px;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-badge .pulse {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--primary);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
     }
 
     .hero h1 {
-      position: relative;
-      font-size: clamp(2.5rem, 6vw, 5rem);
-      font-weight: 900;
-      line-height: 1.1;
-      margin-bottom: 1.5rem;
-      max-width: 900px;
+      font-size: clamp(2.8rem, 5vw, 4.5rem);
+      font-weight: 700;
+      line-height: 0.95;
+      margin-bottom: 2rem;
+      letter-spacing: -0.03em;
+      text-transform: uppercase;
     }
 
     .hero h1 .accent { color: var(--primary); }
     .hero h1 .green { color: var(--accent); }
+    .hero h1 .thin { font-weight: 300; opacity: 0.7; }
 
-    .hero p {
-      position: relative;
-      font-size: 1.25rem;
-      color: rgba(255,255,255,0.7);
-      max-width: 600px;
+    .hero-sub {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
       margin-bottom: 3rem;
-      font-weight: 300;
+      padding-left: 1.5rem;
+      border-left: 2px solid rgba(250, 114, 165, 0.3);
+    }
+
+    .hero-sub span {
+      font-size: 0.95rem;
+      font-weight: 400;
+      color: var(--gray-300);
+    }
+
+    .hero-sub span strong {
+      color: var(--white);
+      font-weight: 700;
     }
 
     .hero-stats {
-      position: relative;
       display: flex;
       gap: 3rem;
-      margin-top: 2rem;
-    }
-
-    .hero-stats .stat {
-      text-align: center;
+      margin-top: 1rem;
     }
 
     .hero-stats .stat-number {
       font-size: 2.5rem;
-      font-weight: 900;
-      color: var(--primary);
+      font-weight: 700;
       line-height: 1;
+      letter-spacing: -0.03em;
     }
 
+    .hero-stats .stat-number .pink { color: var(--primary); }
+
     .hero-stats .stat-label {
-      font-size: 0.75rem;
+      font-size: 0.55rem;
       text-transform: uppercase;
-      letter-spacing: 2px;
-      color: rgba(255,255,255,0.5);
+      letter-spacing: 3px;
+      color: var(--gray-500);
       margin-top: 0.5rem;
+      font-weight: 600;
+    }
+
+    .hero-scroll {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.55rem;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      color: var(--gray-500);
+      font-weight: 600;
+      margin-top: 2.5rem;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .hero-scroll:hover { color: var(--white); }
+
+    .hero-scroll .scroll-line {
+      width: 40px;
+      height: 1px;
+      background: var(--primary);
     }
 
     /* === SECTIONS === */
@@ -796,14 +880,18 @@
 
     /* === RESPONSIVE === */
     @media (max-width: 1024px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-right { min-height: 50vh; }
+      .hero-left { padding: 8rem 3rem 4rem; }
       .solution-grid { grid-template-columns: repeat(2, 1fr); }
       .metrics-grid { grid-template-columns: repeat(2, 1fr); }
     }
 
     @media (max-width: 768px) {
       nav ul { display: none; }
-      .hero { padding: 7rem 2rem 4rem; }
-      .hero-stats { gap: 2rem; }
+      .hero-left { padding: 7rem 2rem 3rem; }
+      .hero-stats { flex-direction: column; gap: 1.5rem; }
+      .v-sidebar { display: none; }
       .hero-sub { flex-direction: column; gap: 0.5rem; }
       .hero-stats { gap: 2rem; }
       .problem-grid { grid-template-columns: 1fr; }
@@ -840,30 +928,44 @@
     </ul>
   </nav>
 
-  <!-- HERO -->
+  <!-- HERO - SPLIT -->
   <section class="hero">
-    <div class="hero-badge">👗 Proposta Exclusiva</div>
-    <h1>
-      Seu atacado no<br>
-      <span class="accent">piloto automático</span><br>
-      com CRM Profissional
-    </h1>
-    <p>
-      Centralize o WhatsApp, controle cada vendedor e nunca mais perca um lojista — processo comercial desenhado e integrado ao Bling.
-    </p>
-    <div class="hero-stats">
-      <div class="stat">
-        <div class="stat-number">2+</div>
-        <div class="stat-label">Vendedores</div>
+    <div class="v-sidebar">
+      <span class="v-sidebar-text">Mundo Ray / Atacado B2B / Fortaleza CE</span>
+    </div>
+    <div class="hero-left">
+      <div class="hero-badge"><span class="pulse"></span> Proposta Exclusiva</div>
+      <h1>
+        <span class="thin">Mundo Ray</span><br>
+        <span class="accent">Vendas</span><br>
+        no Controle
+      </h1>
+      <div class="hero-sub">
+        <span><strong>CRM</strong> Processo comercial desenhado</span>
+        <span><strong>WhatsApp</strong> centralizado com metricas</span>
+        <span><strong>Bling</strong> integrado ao pipeline</span>
       </div>
-      <div class="stat">
-        <div class="stat-number">5+</div>
-        <div class="stat-label">Canais de Venda</div>
+      <div class="hero-stats">
+        <div class="stat">
+          <div class="stat-number">2<span class="pink">+</span></div>
+          <div class="stat-label">Vendedores</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">5<span class="pink">+</span></div>
+          <div class="stat-label">Canais</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">15<span class="pink">+</span></div>
+          <div class="stat-label">Grupos</div>
+        </div>
       </div>
-      <div class="stat">
-        <div class="stat-number">15+</div>
-        <div class="stat-label">Grupos Ativos</div>
-      </div>
+      <a href="#problema" class="hero-scroll">
+        <span class="scroll-line"></span> Scroll down
+      </a>
+    </div>
+    <div class="hero-right">
+      <img src="https://cdn.awsli.com.br/1140x850/2519/2519810/banner/mundo-ray-criativo-folder-15-01-1-8atbvwn4hi.png" alt="Mundo Ray Atacado">
+      <div class="dot-grid-subtle"></div>
     </div>
   </section>
 
