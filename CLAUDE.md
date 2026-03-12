@@ -62,14 +62,19 @@ Processo comercial desenhado, WhatsApp centralizado, automacoes de follow-up, da
 - S4: Treinamento & Go-Live
 - +3 meses acompanhamento
 
-## Stack (DECISAO 2026-03-11)
+## Stack de Producao (DECISAO 2026-03-11)
+- **Servidor:** Hetzner VPS (4vCPU, 8GB RAM) + Docker Compose
 - **CRM:** GoHighLevel (LC Phone + Conversations API)
 - **ERP:** Bling (integracao)
 - **WhatsApp:** API Oficial via GHL LC Phone — numero fica no GHL
-- **Agente IA:** FastAPI + LangGraph (Railway) — multi-tenant 11 lojas
+- **Agente IA:** FastAPI + LangGraph (Hetzner, Docker) — multi-tenant 11 lojas
 - **Trigger:** GHL Workflow → Webhook direto pro agente (sem n8n)
-- **Modelo:** GPT-4.1-mini (cost-efficient pra volume)
+- **Modelo:** GPT-4.1-mini (com routing por complexidade + cache Redis)
+- **Banco:** PostgreSQL (historico conversas + analytics)
+- **Cache:** Redis (FAQ cache, rate limiting)
+- **Proxy:** Nginx (SSL Let's Encrypt, rate limit, gzip)
 - **Base:** 80K+ clientes
+- **Visao:** Validacao do produto SaaS da Triadeflow (ver `decisao-saas-agente-ia-multi-loja.md` na KB)
 - **Arquitetura completa:** `ARQUITETURA-AGENTE-GRUPO-RAY.md`
 
 ## Estado (2026-03-11)
