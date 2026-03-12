@@ -62,12 +62,15 @@ Processo comercial desenhado, WhatsApp centralizado, automacoes de follow-up, da
 - S4: Treinamento & Go-Live
 - +3 meses acompanhamento
 
-## Stack
-- **CRM:** GoHighLevel (provavel — mesmo stack Triadeflow)
+## Stack (DECISAO 2026-03-11)
+- **CRM:** GoHighLevel (LC Phone + Conversations API)
 - **ERP:** Bling (integracao)
-- **WhatsApp:** API Oficial (DECISAO 2026-03-11) — central de atendimento + capaz pra agente IA futuro
-- **Automacoes:** GHL Workflows + n8n (se necessario)
-- **Dashboard:** GHL nativo ou custom
+- **WhatsApp:** API Oficial via GHL LC Phone — numero fica no GHL
+- **Agente IA:** FastAPI + LangGraph (Railway) — multi-tenant 11 lojas
+- **Trigger:** GHL Workflow → Webhook direto pro agente (sem n8n)
+- **Modelo:** GPT-4.1-mini (cost-efficient pra volume)
+- **Base:** 80K+ clientes
+- **Arquitetura completa:** `ARQUITETURA-AGENTE-GRUPO-RAY.md`
 
 ## Estado (2026-03-11)
 - [x] Proposta comercial criada e publicada
