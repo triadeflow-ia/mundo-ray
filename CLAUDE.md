@@ -62,10 +62,10 @@ Processo comercial desenhado, WhatsApp centralizado, automacoes de follow-up, da
 - S4: Treinamento & Go-Live
 - +3 meses acompanhamento
 
-## Stack (a definir na arquitetura)
+## Stack
 - **CRM:** GoHighLevel (provavel — mesmo stack Triadeflow)
 - **ERP:** Bling (integracao)
-- **WhatsApp:** A definir (Stevo, Z-API, ou GHL nativo)
+- **WhatsApp:** API Oficial (DECISAO 2026-03-11) — central de atendimento + capaz pra agente IA futuro
 - **Automacoes:** GHL Workflows + n8n (se necessario)
 - **Dashboard:** GHL nativo ou custom
 
